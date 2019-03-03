@@ -76,7 +76,7 @@ module Robinhood
 
         if @private[:auth_token].nil?
           raw_response = HTTParty.post(
-            @api_url + "api-token-auth/",
+            @api_url + "oauth2/token/",
             body: {
               "password" => @private[:password],
               "username" => @private[:username],
