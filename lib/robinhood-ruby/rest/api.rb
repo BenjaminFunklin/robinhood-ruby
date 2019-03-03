@@ -42,7 +42,6 @@ module Robinhood
       end
 
       def buy(symbol, instrument_id, price, quantity)
-        byebug
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
@@ -65,7 +64,8 @@ module Robinhood
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
-            "account" => @private.account,
+            # "account" => @private.account,
+            "account" => account["results"][0]["url"],
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "price" => price,
             "quantity" => quantity,
@@ -83,7 +83,8 @@ module Robinhood
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
-            "account" => @private.account,
+            # "account" => @private.account,
+            "account" => account["results"][0]["url"],
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "price" => price,
             "quantity" => quantity,
@@ -101,7 +102,8 @@ module Robinhood
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
-            "account" => @private.account,
+            # "account" => @private.account,
+            "account" => account["results"][0]["url"],
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "price" => price,
             "quantity" => quantity,
@@ -119,7 +121,8 @@ module Robinhood
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
-            "account" => @private.account,
+            # "account" => @private.account,
+            "account" => account["results"][0]["url"],
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "stop_price" => price,
             "quantity" => quantity,
