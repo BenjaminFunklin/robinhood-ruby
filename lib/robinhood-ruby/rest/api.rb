@@ -47,7 +47,7 @@ module Robinhood
           endpoints[:orders],
           body: {
             # "account" => @private.account,
-            "account" => account,
+            "account" => account["results"][0]["url"],
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "price" => price,
             "quantity" => quantity,
