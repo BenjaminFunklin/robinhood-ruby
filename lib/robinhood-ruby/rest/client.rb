@@ -72,13 +72,16 @@ module Robinhood
       def login
         @private[:username] = @options[:username]
         @private[:password] = @options[:password]
+        @private[:client_id] = @options[:client_id]
 
         if @private[:auth_token].nil?
           raw_response = HTTParty.post(
             @api_url + "api-token-auth/",
             body: {
               "password" => @private[:password],
-              "username" => @private[:username]
+              "username" => @private[:username],
+              grant_type: 'password',
+              client_id: @private[:client_id]
             }.as_json,
             headers: @headers
           )
