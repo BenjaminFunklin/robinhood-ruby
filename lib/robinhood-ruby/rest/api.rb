@@ -5,7 +5,7 @@ module Robinhood
         raw_response = HTTParty.get(endpoints[:accounts], headers: headers)
         JSON.parse(raw_response.body)
       end
-      
+
       def investment_profile
         raw_response = HTTParty.get(endpoints[:investment_profile], headers: headers)
         JSON.parse(raw_response.body)
@@ -42,10 +42,12 @@ module Robinhood
       end
 
       def buy(symbol, instrument_id, price, quantity)
+        byebug
         raw_response = HTTParty.post(
           endpoints[:orders],
           body: {
-            "account" => @private.account,
+            # "account" => @private.account,
+            "account" => account,
             "instrument" => @api_url + "instruments/#{instrument_id}/",
             "price" => price,
             "quantity" => quantity,
@@ -144,27 +146,27 @@ module Robinhood
       def positions
         raw_response = HTTParty.get(endpoints[:positions], headers: headers)
         JSON.parse(raw_response.body)
-      end      
+      end
 
       def news(symbol)
         raw_response = HTTParty.get(endpoints[:news] + symbol.to_s + "/", headers: headers)
         JSON.parse(raw_response.body)
-      end      
+      end
 
       def markets
         raw_response = HTTParty.get(endpoints[:markets], headers: headers)
         JSON.parse(raw_response.body)
-      end      
+      end
 
       def sp500_up
         raw_response = HTTParty.get(endpoints[:sp500_up], headers: headers)
         JSON.parse(raw_response.body)
-      end      
+      end
 
       def sp500_down
         raw_response = HTTParty.get(endpoints[:sp500_down], headers: headers)
         JSON.parse(raw_response.body)
-      end      
+      end
 
       # def create_watch_list(name, callback)
       # return _request.post({
@@ -189,7 +191,7 @@ module Robinhood
         raw_response = HTTParty.get(endpoints[:quotes] + "historicals/" + symbol, query: {"interval" => intv.to_s, "span" => span}, headers: headers)
         JSON.parse(raw_response.body)
       end
-     
+
       private
 
       def headers
