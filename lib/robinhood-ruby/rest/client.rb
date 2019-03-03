@@ -93,7 +93,7 @@ module Robinhood
             false
           elsif response["access_token"]
             @private[:auth_token] = response["access_token"]
-            @headers["Authorization"] = "Token " + @private[:auth_token].to_s
+            @headers["Authorization"] = "Bearer " + @private[:auth_token].to_s
             # @private[:account] = account["results"][0]["url"]
           end
         end
