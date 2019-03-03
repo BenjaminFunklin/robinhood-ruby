@@ -86,6 +86,7 @@ module Robinhood
             headers: @headers
           )
           response = JSON.parse(raw_response.body)
+          puts response.inspect
 
           if response["non_field_errors"]
             puts response["non_field_errors"]
