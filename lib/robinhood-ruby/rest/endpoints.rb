@@ -2,14 +2,14 @@ module Robinhood
   module REST
     class Endpoints
       attr_accessor :endpoints
-      
+
       def initialize
       end
 
       def self.endpoints
         api_url = "https://api.robinhood.com/"
         {
-          login:                    api_url + "api-token-auth/",
+          login:                    api_url + "oauth2/token/",
           investment_profile:       api_url + "user/investment_profile/",
           accounts:                 api_url + "accounts/",
           ach_iav_auth:             api_url + "ach/iav/auth/",
