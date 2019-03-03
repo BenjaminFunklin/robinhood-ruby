@@ -9,7 +9,7 @@ module Robinhood
         @options[:username] = args[0] || Robinhood.username
         @options[:password] = args[1] || Robinhood.password
         @options[:client_id] = args[2] || Robinhood.client_id
-        @options[:username] = (args.size > 2 && args[2].is_a?(String) ? args[2] : args[0]) || Robinhood.username
+        # @options[:username] = (args.size > 2 && args[2].is_a?(String) ? args[2] : args[0]) || Robinhood.username
 
         if @options[:username].nil? || @options[:password].nil?
           raise ArgumentError, "Account username and password are required"
